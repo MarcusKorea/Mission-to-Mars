@@ -38,7 +38,7 @@
                     <div class="row" id="mars-facts">
                         <div class="col-md-12">
                             <h4>Mars Facts</h4>
-                            {{mars_info.facts | safe}}
+                            {{mars_info.table_facts}}
                         </div>
                     </div>
                 </div>
@@ -50,10 +50,9 @@
             <hr>
             <div class="col-md-12">
                 <div class="row" id="mars-hemispheres">
-                    {% for hemisphere in mars_info.hemispheres %}
+                    {% for hemisphere in mars_info.hemisphere %}
                     <div class="col-md-6">
                         <div class="card text-white bg-danger" style="margin: 30px;">
-                            <!-- If Images are False/None/Non-Existent, Then Default to Error Message -->
                             <img class="card-img-top" src="{{hemisphere.img_url}}" alt="Featured Image"/>
                             <div class="card-body">
                                 <p class="card-text">{{hemisphere.title}}</p>
