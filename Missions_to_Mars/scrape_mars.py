@@ -37,27 +37,24 @@ def images(browser):
     featured_image_url = soup.find("img",class_= "headerimage")
     featured_image_url = featured_image_url["src"]
 
-    return featured_image_url
+    return url+"/"+featured_image_url
 
 
-def facts(browser):
-    # mars facts
-    # go to facts site
-    url = "https://galaxyfacts-mars.com"
-    browser.visit(url)
-    html = browser.html
-    soup = BeautifulSoup(html, 'html.parser')
+
+# mars facts
+# go to facts site
+url = "https://galaxyfacts-mars.com"
 
 
-    # find table data
-    facts_table = pd.read_html(url)[0]
+# find table data
+facts_table = pd.read_html(url)[0]
 
-    # give column appropriate names
-    facts_table.columns = ["Measurements","Mars","Earth"]
-    facts_table=facts_table.drop(0).reset_index()
-    facts_table= facts_table.drop('index',axis = 1)
+# give column appropriate names
+facts_table.columns = ["Measurements","Mars","Earth"]
+facts_table=facts_table.drop(0).reset_index()
+facts_table= facts_table.drop('index',axis = 1)
+facts_html = facts_table.to_html()
     
-    return facts_table
 
 def hem(browser):
     # mars hemispheres
@@ -101,19 +98,20 @@ def scrape():
 
     title, para = nasa(browser)
     image_url = images(browser)
-    table_facts = facts(browser)
+    table_facts = facts_html
     hemisphere = hem(browser)
 
     data = {
-        "Title:": title,
-        "Info:": para,
-        "Image Url: ":image_url,
-        "Table:": table_facts,
-        "Hemisphere:": hemisphere
+        "title": title,
+        "para": para,
+        "image_url":image_url,
+        "table_facts": table_facts,
+        "hemisphere": hemisphere
     }
 
     browser.quit()
     print("Finished scarping.")
+    return data
     
 if __name__ == "__main__":
     scrape()

@@ -4,25 +4,25 @@ from flask_pymongo import PyMongo
 
 app = Flask(__name__)
 
-mongo = PyMongo(app, uri="mongodb://localhost:27017")
+mongo = PyMongo(app, uri="mongodb://localhost:27017/mars_app")
 
 @app.route("/")
 def index():
-    mars_info = mongo.db.collection.find_one()
 
-    # Return data
-    return render_template("index.html", mars=mars_info)
+    mars_info = mongo.db.mars_info.find_one()
+
+    return render_template("index.html", data=mars_info)
 
 @app.route("/scrape")
 def data_scrape():
 
-    mars = mongo.db.mars
+    info = mongo.db.mars_info
 
-    data = scrape_mars.scrape_all()
-    mars.update({}, data, upsert=True)
-    return "Scraping done!"
+    mars_data = scrape_mars.scrape()
+
+    info.update({}, mars_data, upsert=True)
+    return redirect("/")
 
 # main
 if __name__ == "__main__":
-    app.run()
-    app.debug = True
+    app.run(debug = True)
