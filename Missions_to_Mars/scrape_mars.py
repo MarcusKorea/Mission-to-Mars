@@ -94,7 +94,7 @@ def hem(browser):
 def scrape():
     print("Starting web scraping...")
     executable_path = {'executable_path': ChromeDriverManager().install()}
-    browser = Browser('chrome', **executable_path, headless=False)
+    browser = Browser('chrome', **executable_path, headless=True)
 
     title, para = nasa(browser)
     image_url = images(browser)

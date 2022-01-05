@@ -15,12 +15,6 @@ Complete your initial scraping using Jupyter Notebook, BeautifulSoup, Pandas, an
 
 * Scrape the [Mars News Site](https://redplanetscience.com/) and collect the latest News Title and Paragraph Text. Assign the text to variables that you can reference later.
 
-```python
-# Example:
-news_title = "NASA's Next Mars Mission to Investigate Interior of Red Planet"
-
-news_p = "Preparation of NASA's next spacecraft to Mars, InSight, has ramped up this summer, on course for launch next May from Vandenberg Air Force Base in central California -- the first interplanetary launch in history from America's West Coast."
-```
 
 ### JPL Mars Space Images - Featured Image
 
@@ -31,11 +25,6 @@ news_p = "Preparation of NASA's next spacecraft to Mars, InSight, has ramped up 
 * Make sure to find the image url to the full size `.jpg` image.
 
 * Make sure to save a complete url string for this image.
-
-```python
-# Example:
-featured_image_url = 'https://spaceimages-mars.com/image/featured/mars2.jpg'
-```
 
 ### Mars Facts
 
@@ -52,17 +41,6 @@ featured_image_url = 'https://spaceimages-mars.com/image/featured/mars2.jpg'
 * Save both the image url string for the full resolution hemisphere image, and the Hemisphere title containing the hemisphere name. Use a Python dictionary to store the data using the keys `img_url` and `title`.
 
 * Append the dictionary with the image url string and the hemisphere title to a list. This list will contain one dictionary for each hemisphere.
-
-```python
-# Example:
-hemisphere_image_urls = [
-    {"title": "Valles Marineris Hemisphere", "img_url": "..."},
-    {"title": "Cerberus Hemisphere", "img_url": "..."},
-    {"title": "Schiaparelli Hemisphere", "img_url": "..."},
-    {"title": "Syrtis Major Hemisphere", "img_url": "..."},
-]
-```
-
 - - -
 
 ## Step 2 - MongoDB and Flask Application
@@ -78,9 +56,48 @@ Use MongoDB with Flask templating to create a new HTML page that displays all of
 * Create a root route `/` that will query your Mongo database and pass the mars data into an HTML template to display the data.
 
 * Create a template HTML file called `index.html` that will take the mars data dictionary and display all of the data in the appropriate HTML elements. Use the following as a guide for what the final product should look like, but feel free to create your own design.
-
-![final_app_part1.png](Images/final_app.png)
-
 - - -
 
 © 2021 Trilogy Education Services, LLC, a 2U, Inc. brand. Confidential and Proprietary. All Rights Reserved.
+
+## **Languages used**:
+- Python
+- HTML
+- CSS
+
+## **Database used**:
+- MongoDB
+
+## **Python Packages Used**:
+- Pandas
+- bs4
+- splinter
+- Flask
+- requests
+- time
+- webdriver_manager
+- ssl
+
+
+## **Screenshots**
+![Top](/Images/index1.png)
+![Middle](/Images/index2.png)
+![Bottom](/Images/index3.png)
+
+
+## **Running all the code**
+Before running any of the jupyter notebooks please install needed packages running the following code in the terminal.
+         
+        pip install pandas
+        pip install bs4
+        pip install splinter
+        pip install Flask
+        pip install requests
+        pip install time
+        pip install webdriver_manager
+        pip install ssl
+
+1. Set your path to this folder. (If you are using Visual Studio Code just click File > Open Folder > Mission-to-Mars
+2. Run the file *app.py*
+3. Click the in the terminal
+4. Click the button *Scrape New Data*
